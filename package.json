@@ -9,17 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@jwplayer/jwplayer-react": "^1.0.4",
     "flv.js": "^1.6.2",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-flv-player": "^1.0.9",
-    "react-hls-player": "^3.0.7",
     "styled-components": "^5.3.5",
     "video.js": "^7.19.2",
-    "videojs-contrib-hls.js": "^3.2.0",
-    "videojs-fetch-flv": "^1.0.11"
+    "videojs-contrib-hls.js": "^3.2.0"
   },
   "devDependencies": {
     "eslint": "8.16.0",
