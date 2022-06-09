@@ -35,18 +35,14 @@ jobs:
       - name: Generate deployment package
         run: zip -r --symlinks deploy.zip . -x node_modules/\* *.git*
       - name: deploy compress zip file function to huaweicloud functiongraph
-         uses: messense/huaweicloud-github-runner@main
-         with:
-           mode: start
-            github-token: ${{ secrets.GH_PAT }}
-            huawei-cloud-ak: ${{ secrets.HUAWEI_CLOUD_AK }}
-            huawei-cloud-sk: ${{ secrets.HUAWEI_CLOUD_SK }}
-            project-id: ${{ secrets.PROJECT_ID }}
-            availability-zone: ap-Singapore
-            ecs-instance-type: s3.large.2
-            vpc-id: ${{ secrets.VPC_ID }}
-            subnet-id: ${{ secrets.SUBNET_ID }}
-            security-group-id: ${{ secrets.SECURITY_GROUP_ID }}
-
-
-   
+        uses: messense/huaweicloud-github-runner@main
+        with:
+          github-token: ${{ secrets.GH_PAT }}
+          huawei-cloud-ak: ${{ secrets.HUAWEI_CLOUD_AK }}
+          huawei-cloud-sk: ${{ secrets.HUAWEI_CLOUD_SK }}
+          project-id: ${{ secrets.PROJECT_ID }}
+          availability-zone: ap-Singapore
+          ecs-instance-type: s3.large.2
+          vpc-id: ${{ secrets.VPC_ID }}
+          subnet-id: ${{ secrets.SUBNET_ID }}
+          security-group-id: ${{ secrets.SECURITY_GROUP_ID }}
