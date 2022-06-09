@@ -1,4 +1,4 @@
-name: AWS Beanstalk Staging
+name: Huawei Cloud Deployment
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 10
     steps:
       - name: Checkout source code
@@ -31,20 +31,3 @@ jobs:
 
       - name: Build with next.js
         run: npm run build
-
-      - name: Generate deployment package
-        run: zip -r --symlinks deploy.zip . -x node_modules/\* *.git*
-      - name: deploy compress zip file function to huaweicloud functiongraph
-        uses: messense/huaweicloud-github-runner@main
-        with:
-          mode: start
-          github-token: ${{ secrets.GH_PAT }}
-          huawei-cloud-ak: ${{ secrets.HUAWEI_CLOUD_AK }}
-          huawei-cloud-sk: ${{ secrets.HUAWEI_CLOUD_SK }}
-          project-id: ${{ secrets.PROJECT_ID }}
-          ecs-image-id: cfa9fd61-9b5f-4b53-8dfd-79f728089f32
-          availability-zone: ap-southeast-3b
-          ecs-instance-type: s3.large.2
-          vpc-id: ${{ secrets.VPC_ID }}
-          subnet-id: ${{ secrets.SUBNET_ID }}
-          security-group-id: ${{ secrets.SECURITY_GROUP_ID }}
