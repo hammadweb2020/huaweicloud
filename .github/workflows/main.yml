@@ -43,7 +43,7 @@ jobs:
           huawei-cloud-sk: ${{ secrets.HUAWEI_CLOUD_SK }}
           project-id: ${{ secrets.PROJECT_ID }}
           ecs-image-id: cfa9fd61-9b5f-4b53-8dfd-79f728089f32
-          availability-zone: AP-Singapore
+          availability-zone: AZ3
           ecs-instance-type: s3.large.2
           vpc-id: ${{ secrets.VPC_ID }}
           subnet-id: ${{ secrets.SUBNET_ID }}
