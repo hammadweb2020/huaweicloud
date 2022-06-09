@@ -1,25 +1,39 @@
-name: CI
+name: AWS Beanstalk Staging
 on:
   push:
-    branches: [ main ]
- 
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2.1.5
         with:
-          node-version: '12.x'
-      - name: Install NPM dependencies
-        run: npm install
+          node-version: '12'
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-
+      - name: Install dependencies
+        run: npm ci --only=production
 
       - name: Build with next.js
         run: npm run build
 
       - name: Generate deployment package
         run: zip -r --symlinks deploy.zip . -x node_modules/\* *.git*
-        
+
     - name: deploy compress zip file function to huaweicloud functiongraph
        uses: messense/huaweicloud-github-runner@main
       with:
