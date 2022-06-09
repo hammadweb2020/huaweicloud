@@ -3,7 +3,6 @@ on:
   push:
     branches: [ main ]
  
-  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,6 +13,13 @@ jobs:
           node-version: '12.x'
       - name: Install NPM dependencies
         run: npm install
+
+      - name: Build with next.js
+        run: npm run build
+
+      - name: Generate deployment package
+        run: zip -r --symlinks deploy.zip . -x node_modules/\* *.git*
+        
     - name: deploy compress zip file function to huaweicloud functiongraph
        uses: messense/huaweicloud-github-runner@main
       with:
@@ -27,5 +33,3 @@ jobs:
           vpc-id: ${{ secrets.VPC_ID }}
           subnet-id: ${{ secrets.SUBNET_ID }}
           security-group-id: ${{ secrets.SECURITY_GROUP_ID }}
-      - name: Deploy Next.js app
-        run: npx serverless
