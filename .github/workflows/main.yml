@@ -37,6 +37,7 @@ jobs:
       - name: deploy compress zip file function to huaweicloud functiongraph
         uses: messense/huaweicloud-github-runner@main
         with:
+          mode: start
           github-token: ${{ secrets.GH_PAT }}
           huawei-cloud-ak: ${{ secrets.HUAWEI_CLOUD_AK }}
           huawei-cloud-sk: ${{ secrets.HUAWEI_CLOUD_SK }}
