@@ -1,0 +1,32 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install NPM dependencies
+        run: npm install
+    - name: deploy compress zip file function to huaweicloud functiongraph
+       uses: messense/huaweicloud-github-runner@main
+      with:
+         mode: start
+          github-token: ${{ secrets.GH_PAT }}
+          huawei-cloud-ak: ${{ secrets.HUAWEI_CLOUD_AK }}
+          huawei-cloud-sk: ${{ secrets.HUAWEI_CLOUD_SK }}
+          project-id: ${{ secrets.PROJECT_ID }}
+          availability-zone: ap-Singapore
+          ecs-instance-type: s3.large.2
+          vpc-id: ${{ secrets.VPC_ID }}
+          subnet-id: ${{ secrets.SUBNET_ID }}
+          security-group-id: ${{ secrets.SECURITY_GROUP_ID }}
+      - name: Deploy Next.js app
+        run: npx serverless

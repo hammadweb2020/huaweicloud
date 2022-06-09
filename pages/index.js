@@ -1,9 +1,6 @@
 import Head from 'next/head'
-//import 'videojs-fetch-flv'
-
 import styled from 'styled-components'
 import videojs  from 'video.js'
-//import "videojs-contrib-hls.js"
 import dynamic from "next/dynamic";
 export const flvjs = dynamic(
   () => import("videojs-contrib-hls.js"),
@@ -21,7 +18,7 @@ export default function  Home() {
   useEffect(() => {
     if (videoRef.current) {
   const player=  videojs(videoRef.current, {
-
+ 
         sources: [
           {
             src: 'https://stream.mux.com/DS00Spx1CV902MCtPj5WknGlR102V5HFkDe.m3u8',
@@ -31,6 +28,7 @@ export default function  Home() {
       
       });
       player.play()
+      player.responsive(true)
      // player.fetchFlv({
      //   isLive: false
     //  }).start()
@@ -42,7 +40,7 @@ export default function  Home() {
   
 
   return (
-    <div >
+  <>
       <Head>
         <title>Bluamoeba Portal</title>
        
@@ -51,23 +49,28 @@ export default function  Home() {
          </Head>
       
       <Section>
-     
 
-<video width="900px" height="540px"  preload="auto" controls  ref={videoRef} className="video-js " />
+     <H1>Welcome bluamoeba Live Portal</H1>
+
+<video width="900px" height="540px"  preload="auto"  controls  ref={videoRef} className="video-js video-fluid vjs-theme-fantasy" />
   
 
 
-     
-
-  
    
 </Section>
-    </div>
+</>
   )
 }
 
-const Section = styled.section`
-  flex: 1 1 100%;
-  height: 100%;
+const Section = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const H1 = styled.h1`
+font-family:Arial, Helvetica, sans-serif;
+padding-bottom:10px;
 `
 
