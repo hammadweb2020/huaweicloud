@@ -27,7 +27,7 @@ jobs:
             ${{ runner.os }}-nextjs-
 
       - name: Install dependencies
-        run: npm ci --only=production
+        run: npm install
 
       - name: Build with next.js
         run: npm run build
