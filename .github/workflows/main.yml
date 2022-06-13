@@ -22,6 +22,6 @@ jobs:
       - name: Build with next.js
         run: npm run build
       - name: Copy from action runner to Live Server
-        run: mv /root/actions-runner/_work/huaweicloud /var/www
+        run: 'cp' -rf /root/actions-runner/_work/huaweicloud /var/www
       - name: Run PM2
         run: pm2 start npm --name=huaweicloud
