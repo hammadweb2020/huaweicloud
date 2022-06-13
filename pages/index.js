@@ -50,7 +50,7 @@ export default function  Home() {
       
       <Section>
 
-     <H1>Welcome bluamoeba Live Portal</H1>
+     <H1>Welcome bluamoeba Live Streaming Portal </H1>
 
 <video width="900px" height="540px"  preload="auto"  controls  ref={videoRef} className="video-js video-fluid vjs-theme-fantasy" />
   
