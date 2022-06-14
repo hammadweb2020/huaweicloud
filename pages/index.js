@@ -65,6 +65,6 @@ padding-bottom:10px;
 `
 
 const MainPlayerJW = styled(JWPlayer)`
- width: 1120px;
-  height: 560px;
+ width: 960px;
+  height: 540px;
 `
