@@ -1,49 +1,25 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import videojs  from 'video.js'
 import dynamic from "next/dynamic";
-export const flvjs = dynamic(
-  () => import("videojs-contrib-hls.js"),
-  {
-    ssr: false,
-  }
-)
-import { useRef, useEffect } from "react";
+
+import JWPlayer from '../components/common/JW';
+
 
 
 
 
 export default function  Home() {
-  const videoRef = useRef(null);
-  useEffect(() => {
-    if (videoRef.current) {
-  const player=  videojs(videoRef.current, {
- 
-        sources: [
-          {
-            src: 'https://stream.mux.com/DS00Spx1CV902MCtPj5WknGlR102V5HFkDe.m3u8',
-           type: 'application/x-mpegURL'
-          }
-        ]
-      
-      });
-      player.play()
-      player.responsive(true)
-     // player.fetchFlv({
-     //   isLive: false
-    //  }).start()
-    }
-   
 
- });
+
 
   
 
   return (
   <>
+      
       <Head>
         <title>Bluamoeba Portal</title>
-       
+        <script src="https://cdn.jwplayer.com/libraries/ahm5JgZo.js" />
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" /> 
          </Head>
@@ -51,11 +27,11 @@ export default function  Home() {
       <Section>
 
      <H1>Welcome Bluamoeba Live Streaming Portal </H1>
+     <MainContentMid>
+     <MainPlayerJW source='https://stream.mux.com/DS00Spx1CV902MCtPj5WknGlR102V5HFkDe.m3u8'></MainPlayerJW>
 
-<video width="900px" height="540px"  preload="auto"  controls  ref={videoRef} className="video-js video-fluid vjs-theme-fantasy" />
-  
 
-
+     </MainContentMid>
    
 </Section>
 </>
@@ -69,8 +45,26 @@ const Section = styled.div`
   justify-content: center;
 `
 
+
+
+
+const MainContentMid = styled.div`
+  padding: 5px 5px 10px;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+`
 const H1 = styled.h1`
 font-family:Arial, Helvetica, sans-serif;
 padding-bottom:10px;
 `
 
+const MainPlayerJW = styled(JWPlayer)`
+ width: 1120px;
+  height: 560px;
+`
