@@ -28,7 +28,7 @@ export default function  Home() {
 
      <H1>Welcome Bluamoeba Live Streaming Portal </H1>
      <MainContentMid>
-     <MainPlayerJW source='http://live.bluamoeba.com/live/huawei.flv'></MainPlayerJW>
+     <MainPlayerJW source='https://live.bluamoeba.com/live/huawei.m3u8'></MainPlayerJW>
 
 
      </MainContentMid>
