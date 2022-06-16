@@ -28,7 +28,7 @@ export default function  Home() {
 
      <H1>Welcome Bluamoeba Live Streaming Portal </H1>
      <MainContentMid>
-     <MainPlayerJW source='https://stream.mux.com/DS00Spx1CV902MCtPj5WknGlR102V5HFkDe.m3u8'></MainPlayerJW>
+     <MainPlayerJW source='http://live.bluamoeba.com/live/huawei.flv'></MainPlayerJW>
 
 
      </MainContentMid>
