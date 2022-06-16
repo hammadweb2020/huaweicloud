@@ -21,7 +21,7 @@ export default function  Home() {
  
         sources: [
           {
-            src: 'https://live.bluamoeba.com/live/huawei.m3u8',
+            src: 'https://pull.bluamoeba.com/live/huawei.m3u8',
            type: 'application/x-mpegURL'
           }
         ]
