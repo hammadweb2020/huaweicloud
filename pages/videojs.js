@@ -10,7 +10,7 @@ export const flvjs = dynamic(
 )
 import { useRef, useEffect } from "react";
 
-
+  
 
 
 export default function  Home() {
@@ -42,7 +42,7 @@ export default function  Home() {
   return (
   <>
       <Head>
-        <title>Bluamoeba Portal</title>
+        <title>Bluamoeba Portal test</title>
        
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" /> 
